@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>车载 Agent：从可做到可用</title>
+  
+  <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
+  
+  <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans SC', 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .slide {
+      width: 450px;
+      height: 800px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+      overflow: hidden;
+    }
+    .light-spot-1 {
+      position: absolute;
+      width: 350px; height: 350px;
+      background: #3b82f6;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.25;
+      top: -120px;
+      right: -80px;
+    }
+    .light-spot-2 {
+      position: absolute;
+      width: 280px; height: 280px;
+      background: #8b5cf6;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.2;
+      bottom: -100px;
+      left: -60px;
+    }
+    .content { position: relative; z-index: 10; text-align: center; width: 100%; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: #6b7280;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 4px 14px;
+      border-radius: 99px;
+    }
+
+    .big-number {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .big-number .percent {
+      font-size: 2.5rem;
+      vertical-align: super;
+    }
+
+    .vs-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .vs-box {
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      min-width: 120px;
+    }
+    .vs-box .label {
+      font-size: 0.8rem;
+      font-weight: 300;
+      opacity: 0.6;
+      margin-bottom: 4px;
+    }
+    .vs-box .value {
+      font-size: 2.5rem;
+      font-weight: 900;
+    }
+
+    .arrow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .line {
+      width: 60px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .insight {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .insight-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #9ca3af;
+    }
+
+    .highlight-blue { color: #60a5fa; }
+    .highlight-amber { color: #fbbf24; }
+    .highlight-green { color: #34d399; }
+
+    .steps-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .step-dot {
+      width: 10px; height: 4px;
+      border-radius: 2px;
+      background: #3b82f6;
+      opacity: 0.3;
+    }
+    .step-dot.filled { opacity: 0.8; }
+    .step-dot.dim { opacity: 0.15; }
+
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #4b5563;
+    }
+
+    .label-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.2);
+      padding: 2px 10px;
+      border-radius: 99px;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="slide">
+  <div class="light-spot-1"></div>
+  <div class="light-spot-2"></div>
+  
+  <div class="content">
+    
+    <div class="section-label">CORE INSIGHT</div>
+    
+    <!-- 标题 -->
+    <h1 class="text-2xl font-black leading-snug mb-6" style="line-height: 1.4;">
+      不是<br>
+      <span class="text-3xl">LLM 不够聪明</span><br>
+      <span class="highlight-amber text-3xl">是架构不对</span>
+    </h1>
+    
+    <!-- 算式示意：6 steps -->
+    <div class="steps-row">
+      <div class="step-dot filled"></div>
+      <div class="step-dot filled"></div>
+      <div class="step-dot filled"></div>
+      <div class="step-dot filled"></div>
+      <div class="step-dot filled"></div>
+      <div class="step-dot filled"></div>
+    </div>
+    <p class="text-xs text-gray-600 mb-4">车载任务需 6 步推理链</p>
+    
+    <!-- VS 对比 -->
+    <div class="vs-row">
+      <div class="vs-box" style="background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.15);">
+        <div class="label highlight-blue">纯 LLM</div>
+        <div class="value highlight-blue">90<span class="percent">%</span></div>
+        <div style="font-size: 0.65rem; color: #6b7280; margin-top: 2px;">单步准确率</div>
+      </div>
+      
+      <div class="arrow-row">
+        <div class="line"></div>
+        <span style="font-size: 1.2rem; color: #4b5563;">→</span>
+        <span style="font-size: 0.7rem; color: #4b5563; max-width: 60px;">×6 步</span>
+        <span style="font-size: 1.2rem; color: #4b5563;">→</span>
+        <div class="line"></div>
+      </div>
+      
+      <div class="vs-box" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.15);">
+        <div class="label" style="color: #f87171;">端到端</div>
+        <div class="value" style="color: #f87171;">53<span class="percent">%</span></div>
+        <div style="font-size: 0.65rem; color: #6b7280; margin-top: 2px;">不可接受</div>
+      </div>
+    </div>
+    
+    <!-- 分隔装饰 -->
+    <div style="width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 1rem auto;"></div>
+    
+    <!-- Agent 方案 -->
+    <div class="vs-row" style="margin: 0.5rem 0;">
+      <div class="vs-box" style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.15); width: 200px;">
+        <div class="label highlight-green">LLM + Agent 架构</div>
+        <div class="value highlight-green" style="font-size: 3rem;">95<span class="percent">%</span></div>
+        <div style="font-size: 0.65rem; color: #6b7280; margin-top: 2px;">端到端成功率</div>
+      </div>
+    </div>
+    
+    <!-- 关键点 -->
+    <div class="insight">
+      <p class="insight-text">
+        Agent 不是锦上添花——<span class="highlight-green">它是让车载 AI 从「可做」到「可用」的质变架构</span>。
+        <br><br>
+        失败时自动回退、观测结果后重新规划、安全层兜底。
+        <span class="highlight-amber">50% → 95%</span>，差的不只是模型。
+      </p>
+    </div>
+    
+    <div class="label-tag">SAFETY × RELIABILITY × RECOVERY</div>
+    
+    <div class="footer-note">来源：ReAct / Reflexion / Self-Consistency 已验证</div>
+  </div>
+</div>
+</body>
+</html>
