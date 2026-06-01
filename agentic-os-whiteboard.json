@@ -1,0 +1,431 @@
+{
+  "version": 2,
+  "nodes": [
+    {
+      "type": "frame",
+      "id": "root",
+      "x": 0, "y": 0,
+      "width": 1200,
+      "height": "fit-content",
+      "layout": "vertical",
+      "gap": 20,
+      "padding": 28,
+      "children": [
+        {
+          "type": "text",
+          "id": "title",
+          "width": "fill-container",
+          "height": "fit-content",
+          "text": "🏗 Agentic OS 架构",
+          "fontSize": 24,
+          "textColor": "#1F2329",
+          "textAlign": "center",
+          "verticalAlign": "middle"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "width": "fill-container",
+          "height": "fit-content",
+          "text": "MasterAgent（极薄语音路由器） · Parking Agent（全权执行） · Tool 体系",
+          "fontSize": 14,
+          "textColor": "#646A73",
+          "textAlign": "center",
+          "verticalAlign": "middle"
+        },
+        {
+          "type": "frame",
+          "id": "row-routing",
+          "width": "fill-container",
+          "height": "fit-content",
+          "layout": "horizontal",
+          "gap": 20,
+          "padding": 0,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "label-routing",
+              "width": 80,
+              "height": "fit-content",
+              "text": "路由层",
+              "fontSize": 20,
+              "textColor": "#1F2329",
+              "textAlign": "right"
+            },
+            {
+              "type": "frame",
+              "id": "routing-layer-bg",
+              "width": "fill-container",
+              "height": "fit-content",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": 16,
+              "fillColor": "#F0F4FC",
+              "borderColor": "#5178C6",
+              "borderWidth": 2,
+              "borderRadius": 8,
+              "children": [
+                {
+                  "type": "rect",
+                  "id": "master-agent-card",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#5178C6",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "🎙️ MasterAgent\n语音路由器\n纯自然语言路由 · 只维护「有哪些子 Agent + 各自负责什么」\n收到用户指令 → 原封不动转发给对应子 Agent\n📍 8775 芯片",
+                  "fontSize": 13,
+                  "textColor": "#1F2329",
+                  "textAlign": "center",
+                  "verticalAlign": "middle"
+                },
+                {
+                  "type": "rect",
+                  "id": "agent-as-tool",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "fillColor": "#FFFFFF",
+                  "borderColor": "#5178C6",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "text": "子 Agent 对其可见为一个 Tool：park_the_car(destination) → status",
+                  "fontSize": 13,
+                  "textColor": "#1F2329",
+                  "textAlign": "center",
+                  "verticalAlign": "middle"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "row-execution",
+          "width": "fill-container",
+          "height": "fit-content",
+          "layout": "horizontal",
+          "gap": 20,
+          "padding": 0,
+          "alignItems": "stretch",
+          "children": [
+            {
+              "type": "text",
+              "id": "label-execution",
+              "width": 80,
+              "height": "fit-content",
+              "text": "执行层",
+              "fontSize": 20,
+              "textColor": "#1F2329",
+              "textAlign": "right"
+            },
+            {
+              "type": "frame",
+              "id": "execution-layer-bg",
+              "width": "fill-container",
+              "height": "fit-content",
+              "layout": "horizontal",
+              "gap": 16,
+              "padding": 16,
+              "fillColor": "#F0F4FC",
+              "borderColor": "#5178C6",
+              "borderWidth": 2,
+              "borderRadius": 8,
+              "alignItems": "stretch",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cockpit-column",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 12,
+                  "fillColor": "#EAE2FE",
+                  "borderColor": "#8569CB",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "cockpit-title",
+                      "width": "fill-container",
+                      "height": "fit-content",
+                      "text": "🎛️ Cockpit Agent 座舱交互",
+                      "bold": true,
+                      "fontSize": 16,
+                      "textAlign": "center"
+                    },
+                    {
+                      "type": "rect",
+                      "id": "cockpit-chip",
+                      "width": "fill-container",
+                      "height": "fit-content",
+                      "fillColor": "#FFFFFF",
+                      "borderColor": "#8569CB",
+                      "borderWidth": 2,
+                      "borderRadius": 6,
+                      "text": "📍 8775 芯片 · L1 本地记忆\n空调 / 音乐 / 导航设置\n与 Parking Agent 无直接通信",
+                      "fontSize": 12,
+                      "textColor": "#1F2329",
+                      "textAlign": "center",
+                      "verticalAlign": "middle"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "cockpit-tools",
+                      "width": "fill-container",
+                      "height": "fit-content",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": 10,
+                      "borderRadius": 6,
+                      "borderColor": "#8569CB",
+                      "borderWidth": 1,
+                      "borderDash": "dashed",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "cockpit-tools-label",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "text": "— Tool —",
+                          "fontSize": 12,
+                          "textColor": "#8569CB",
+                          "textAlign": "center"
+                        },
+                        {
+                          "type": "rect",
+                          "id": "ct1",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "fillColor": "#FFFFFF",
+                          "borderColor": "#8569CB",
+                          "borderWidth": 2,
+                          "borderRadius": 6,
+                          "text": "set_temp() 设定空调温度",
+                          "fontSize": 12,
+                          "textColor": "#1F2329",
+                          "textAlign": "center",
+                          "verticalAlign": "middle"
+                        },
+                        {
+                          "type": "rect",
+                          "id": "ct2",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "fillColor": "#FFFFFF",
+                          "borderColor": "#8569CB",
+                          "borderWidth": 2,
+                          "borderRadius": 6,
+                          "text": "play_music() 播放音乐 / 电台",
+                          "fontSize": 12,
+                          "textColor": "#1F2329",
+                          "textAlign": "center",
+                          "verticalAlign": "middle"
+                        },
+                        {
+                          "type": "rect",
+                          "id": "ct3",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "fillColor": "#FFFFFF",
+                          "borderColor": "#8569CB",
+                          "borderWidth": 2,
+                          "borderRadius": 6,
+                          "text": "navigate_to() 设置导航目的地",
+                          "fontSize": 12,
+                          "textColor": "#1F2329",
+                          "textAlign": "center",
+                          "verticalAlign": "middle"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "parking-column",
+                  "width": "fill-container",
+                  "height": "fit-content",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "padding": 12,
+                  "fillColor": "#FEF1CE",
+                  "borderColor": "#D4B45B",
+                  "borderWidth": 2,
+                  "borderRadius": 8,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "parking-title",
+                      "width": "fill-container",
+                      "height": "fit-content",
+                      "text": "🅿️ Parking Agent 全权执行",
+                      "bold": true,
+                      "fontSize": 16,
+                      "textAlign": "center"
+                    },
+                    {
+                      "type": "rect",
+                      "id": "parking-chip",
+                      "width": "fill-container",
+                      "height": "fit-content",
+                      "fillColor": "#FFFFFF",
+                      "borderColor": "#D4B45B",
+                      "borderWidth": 2,
+                      "borderRadius": 6,
+                      "text": "📍 Thor-U 芯片 · L1 本地记忆 · 断连自治\n接收用户原始指令，理解 + 规划 + 执行全包",
+                      "fontSize": 12,
+                      "textColor": "#1F2329",
+                      "textAlign": "center",
+                      "verticalAlign": "middle"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "parking-tools",
+                      "width": "fill-container",
+                      "height": "fit-content",
+                      "layout": "vertical",
+                      "gap": 6,
+                      "padding": 10,
+                      "borderRadius": 6,
+                      "borderColor": "#D4B45B",
+                      "borderWidth": 1,
+                      "borderDash": "dashed",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "parking-tools-label",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "text": "— Tool —",
+                          "fontSize": 12,
+                          "textColor": "#D4B45B",
+                          "textAlign": "center"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "parking-tools-r1",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "layout": "horizontal",
+                          "gap": 6,
+                          "padding": 0,
+                          "children": [
+                            {
+                              "type": "rect",
+                              "id": "pt1",
+                              "width": "fill-container",
+                              "height": "fit-content",
+                              "fillColor": "#FFFFFF",
+                              "borderColor": "#D4B45B",
+                              "borderWidth": 2,
+                              "borderRadius": 6,
+                              "text": "detect_slots()\n检测可用车位（前视+4环视）",
+                              "fontSize": 11,
+                              "textColor": "#1F2329",
+                              "textAlign": "center",
+                              "verticalAlign": "middle"
+                            },
+                            {
+                              "type": "rect",
+                              "id": "pt2",
+                              "width": "fill-container",
+                              "height": "fit-content",
+                              "fillColor": "#FFFFFF",
+                              "borderColor": "#D4B45B",
+                              "borderWidth": 2,
+                              "borderRadius": 6,
+                              "text": "check_conditions()\n判断阴凉/充电桩等约束",
+                              "fontSize": 11,
+                              "textColor": "#1F2329",
+                              "textAlign": "center",
+                              "verticalAlign": "middle"
+                            },
+                            {
+                              "type": "rect",
+                              "id": "pt3",
+                              "width": "fill-container",
+                              "height": "fit-content",
+                              "fillColor": "#FFFFFF",
+                              "borderColor": "#D4B45B",
+                              "borderWidth": 2,
+                              "borderRadius": 6,
+                              "text": "plan_trajectory()\n规划泊车轨迹→waypoints",
+                              "fontSize": 11,
+                              "textColor": "#1F2329",
+                              "textAlign": "center",
+                              "verticalAlign": "middle"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "parking-tools-r2",
+                          "width": "fill-container",
+                          "height": "fit-content",
+                          "layout": "horizontal",
+                          "gap": 6,
+                          "padding": 0,
+                          "children": [
+                            {
+                              "type": "rect",
+                              "id": "pt4",
+                              "width": "fill-container",
+                              "height": "fit-content",
+                              "fillColor": "#FFFFFF",
+                              "borderColor": "#D4B45B",
+                              "borderWidth": 2,
+                              "borderRadius": 6,
+                              "text": "check_clearance()\n检查路径是否畅通",
+                              "fontSize": 11,
+                              "textColor": "#1F2329",
+                              "textAlign": "center",
+                              "verticalAlign": "middle"
+                            },
+                            {
+                              "type": "rect",
+                              "id": "pt5",
+                              "width": "fill-container",
+                              "height": "fit-content",
+                              "fillColor": "#FFFFFF",
+                              "borderColor": "#D4B45B",
+                              "borderWidth": 2,
+                              "borderRadius": 6,
+                              "text": "inform_user()\n向座舱/用户反馈进度",
+                              "fontSize": 11,
+                              "textColor": "#1F2329",
+                              "textAlign": "center",
+                              "verticalAlign": "middle"
+                            },
+                            {
+                              "type": "rect",
+                              "id": "pt6",
+                              "width": "fill-container",
+                              "height": "fit-content",
+                              "fillColor": "#FFFFFF",
+                              "borderColor": "#D4B45B",
+                              "borderWidth": 2,
+                              "borderRadius": 6,
+                              "text": "retry_or_abort()\n失败时重试或放弃",
+                              "fontSize": 11,
+                              "textColor": "#1F2329",
+                              "textAlign": "center",
+                              "verticalAlign": "middle"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
