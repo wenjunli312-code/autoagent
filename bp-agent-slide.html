@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>车载 Agent：从可做到可用</title>
+  <title>车载 Agent — 安全可落地的智能架构</title>
   
   <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
   
@@ -28,219 +28,160 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
+      padding: 2rem 1.75rem;
       background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
       overflow: hidden;
     }
-    .light-spot-1 {
+
+    /* 光斑 */
+    .glow {
       position: absolute;
-      width: 350px; height: 350px;
-      background: #3b82f6;
       border-radius: 50%;
       filter: blur(120px);
-      opacity: 0.25;
-      top: -120px;
-      right: -80px;
+      pointer-events: none;
     }
-    .light-spot-2 {
-      position: absolute;
-      width: 280px; height: 280px;
-      background: #8b5cf6;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.2;
-      bottom: -100px;
-      left: -60px;
-    }
-    .content { position: relative; z-index: 10; text-align: center; width: 100%; }
+    .glow-1 { width: 300px; height: 300px; background: #2563eb; opacity: 0.2; top: -80px; right: -60px; }
+    .glow-2 { width: 250px; height: 250px; background: #8b5cf6; opacity: 0.15; bottom: -60px; left: -40px; }
+    .glow-3 { width: 200px; height: 200px; background: #10b981; opacity: 0.1; top: 40%; left: 50%; }
 
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      color: #6b7280;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 4px 14px;
-      border-radius: 99px;
+    .content { position: relative; z-index: 10; width: 100%; flex: 1; display: flex; flex-direction: column; }
+
+    /* 标签 */
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.7rem; letter-spacing: 0.15em; color: #6b7280;
+      border: 1px solid rgba(255,255,255,0.06); padding: 4px 14px; border-radius: 99px;
+      align-self: center; margin-bottom: 0.75rem;
     }
 
-    .big-number {
-      font-size: 5rem;
-      font-weight: 900;
-      line-height: 1;
+    /* 主标题 */
+    .main-title { text-align: center; margin-bottom: 1.25rem; }
+    .main-title h1 {
+      font-size: 1.6rem; font-weight: 900; line-height: 1.35; letter-spacing: 0.02em;
     }
-    .big-number .percent {
-      font-size: 2.5rem;
-      vertical-align: super;
-    }
-
-    .vs-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    .vs-box {
-      padding: 1rem 1.5rem;
-      border-radius: 16px;
-      min-width: 120px;
-    }
-    .vs-box .label {
-      font-size: 0.8rem;
-      font-weight: 300;
-      opacity: 0.6;
-      margin-bottom: 4px;
-    }
-    .vs-box .value {
-      font-size: 2.5rem;
-      font-weight: 900;
+    .main-title .sub {
+      font-size: 0.8rem; color: #6b7280; font-weight: 300; margin-top: 6px;
     }
 
-    .arrow-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin: 0.5rem 0;
-    }
-
-    .line {
-      width: 60px;
-      height: 1px;
-      background: rgba(255,255,255,0.15);
-    }
-
-    .insight {
-      margin-top: 1.5rem;
-      padding: 1rem 1.25rem;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.03);
+    /* 三个优势块 */
+    .pillar { 
+      border-radius: 14px; padding: 0.9rem 1rem; margin-bottom: 0.7rem;
       border: 1px solid rgba(255,255,255,0.06);
     }
+    .pillar-safety { background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(59,130,246,0.02)); border-color: rgba(59,130,246,0.2); }
+    .pillar-edge { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(139,92,246,0.02)); border-color: rgba(139,92,246,0.2); }
+    .pillar-data { background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02)); border-color: rgba(16,185,129,0.2); }
 
-    .insight-text {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: #9ca3af;
+    .pillar-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .pillar-icon { width: 24px; height: 24px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+    .pillar-icon.s { background: rgba(59,130,246,0.15); }
+    .pillar-icon.e { background: rgba(139,92,246,0.15); }
+    .pillar-icon.d { background: rgba(16,185,129,0.15); }
+    .pillar-title { font-size: 0.85rem; font-weight: 700; }
+    .pillar-title.blue { color: #60a5fa; }
+    .pillar-title.purple { color: #a78bfa; }
+    .pillar-title.green { color: #34d399; }
+    .pillar-bullets { padding-left: 0; margin-top: 2px; }
+    .pillar-bullets li {
+      list-style: none;
+      font-size: 0.7rem; color: #9ca3af; line-height: 1.55;
+      padding-left: 12px; position: relative;
+    }
+    .pillar-bullets li::before {
+      content: "›"; position: absolute; left: 0; color: #4b5563; font-weight: 700;
     }
 
-    .highlight-blue { color: #60a5fa; }
-    .highlight-amber { color: #fbbf24; }
-    .highlight-green { color: #34d399; }
-
-    .steps-row {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin: 1rem 0 0.5rem;
+    /* Safety 用大号突出 */
+    .safety-highlight {
+      text-align: center;
+      padding: 0.6rem 0 0.4rem;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      margin-top: 0.1rem;
     }
-    .step-dot {
-      width: 10px; height: 4px;
-      border-radius: 2px;
-      background: #3b82f6;
-      opacity: 0.3;
+    .safety-highlight .key {
+      font-size: 1rem; font-weight: 900; color: #60a5fa;
     }
-    .step-dot.filled { opacity: 0.8; }
-    .step-dot.dim { opacity: 0.15; }
-
-    .footer-note {
-      margin-top: 2rem;
-      font-size: 0.7rem;
-      color: #4b5563;
+    .safety-highlight .detail {
+      font-size: 0.65rem; color: #6b7280; margin-top: 2px;
     }
 
-    .label-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      color: #fbbf24;
-      border: 1px solid rgba(251, 191, 36, 0.2);
-      padding: 2px 10px;
-      border-radius: 99px;
-      margin-top: 1rem;
+    .footer-bar {
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.03);
+      display: flex; justify-content: space-between;
+      font-size: 0.6rem; color: #4b5563;
     }
   </style>
 </head>
 <body>
 <div class="slide">
-  <div class="light-spot-1"></div>
-  <div class="light-spot-2"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="glow glow-3"></div>
   
   <div class="content">
     
-    <div class="section-label">CORE INSIGHT</div>
+    <div class="tag">⛑️ KEY PILLARS</div>
     
-    <!-- 标题 -->
-    <h1 class="text-2xl font-black leading-snug mb-6" style="line-height: 1.4;">
-      不是<br>
-      <span class="text-3xl">LLM 不够聪明</span><br>
-      <span class="highlight-amber text-3xl">是架构不对</span>
-    </h1>
-    
-    <!-- 算式示意：6 steps -->
-    <div class="steps-row">
-      <div class="step-dot filled"></div>
-      <div class="step-dot filled"></div>
-      <div class="step-dot filled"></div>
-      <div class="step-dot filled"></div>
-      <div class="step-dot filled"></div>
-      <div class="step-dot filled"></div>
+    <div class="main-title">
+      <h1>车载 Agent<br><span style="color: #60a5fa;">安全可落地</span>的智能架构</h1>
+      <div class="sub">不是堆 API，是系统工程</div>
     </div>
-    <p class="text-xs text-gray-600 mb-4">车载任务需 6 步推理链</p>
-    
-    <!-- VS 对比 -->
-    <div class="vs-row">
-      <div class="vs-box" style="background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.15);">
-        <div class="label highlight-blue">纯 LLM</div>
-        <div class="value highlight-blue">90<span class="percent">%</span></div>
-        <div style="font-size: 0.65rem; color: #6b7280; margin-top: 2px;">单步准确率</div>
+
+    <!-- 第一：安全性（加大篇幅突出） -->
+    <div class="pillar pillar-safety">
+      <div class="pillar-header">
+        <div class="pillar-icon s">🛡️</div>
+        <span class="pillar-title blue">Safety-by-Design — LLM 的创造性受安全约束</span>
       </div>
-      
-      <div class="arrow-row">
-        <div class="line"></div>
-        <span style="font-size: 1.2rem; color: #4b5563;">→</span>
-        <span style="font-size: 0.7rem; color: #4b5563; max-width: 60px;">×6 步</span>
-        <span style="font-size: 1.2rem; color: #4b5563;">→</span>
-        <div class="line"></div>
-      </div>
-      
-      <div class="vs-box" style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.15);">
-        <div class="label" style="color: #f87171;">端到端</div>
-        <div class="value" style="color: #f87171;">53<span class="percent">%</span></div>
-        <div style="font-size: 0.65rem; color: #6b7280; margin-top: 2px;">不可接受</div>
-      </div>
+      <ul class="pillar-bullets">
+        <li>Fail-safe 设计：Agent 超时/失败 → 回退到确定性 safe-stop，不依赖 LLM 正确</li>
+        <li>层级安全监控：Guard Agent 实时拦截危险决策，与规则引擎双重校验</li>
+        <li>确定性调度：Agent 推理受 Thinking Budget 约束，超时强制中断</li>
+        <li>可追溯审计：每一步推理→调用→结果，全链路可回放可审查</li>
+        <li>从 0 到 1 的智驾量产经验：知道在哪里划红线、怎么做 fail-safe</li>
+      </ul>
     </div>
-    
-    <!-- 分隔装饰 -->
-    <div style="width: 80%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); margin: 1rem auto;"></div>
-    
-    <!-- Agent 方案 -->
-    <div class="vs-row" style="margin: 0.5rem 0;">
-      <div class="vs-box" style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.15); width: 200px;">
-        <div class="label highlight-green">LLM + Agent 架构</div>
-        <div class="value highlight-green" style="font-size: 3rem;">95<span class="percent">%</span></div>
-        <div style="font-size: 0.65rem; color: #6b7280; margin-top: 2px;">端到端成功率</div>
+
+    <!-- 第二：端侧部署 -->
+    <div class="pillar pillar-edge">
+      <div class="pillar-header">
+        <div class="pillar-icon e">⚡</div>
+        <span class="pillar-title purple">端侧原生（Edge Native）—— 离线可用，低延迟</span>
       </div>
+      <ul class="pillar-bullets">
+        <li>多芯片异构架构经验（8775 + Thor-U）—— Agent-to-Agent 跨芯片通信</li>
+        <li>端侧推理 &lt; 200ms，断网也能全功能运行（与云端方案拉开代差）</li>
+        <li>模型量化 / 算子融合 / 内存复用 —— 资源受限环境调优的日常能力</li>
+        <li>实时约束精确预算：推理延迟 + Tool 执行延迟 + 通信延迟，全链路可控</li>
+      </ul>
     </div>
-    
-    <!-- 关键点 -->
-    <div class="insight">
-      <p class="insight-text">
-        Agent 不是锦上添花——<span class="highlight-green">它是让车载 AI 从「可做」到「可用」的质变架构</span>。
-        <br><br>
-        失败时自动回退、观测结果后重新规划、安全层兜底。
-        <span class="highlight-amber">50% → 95%</span>，差的不只是模型。
-      </p>
+
+    <!-- 第三：数据闭环 -->
+    <div class="pillar pillar-data">
+      <div class="pillar-header">
+        <div class="pillar-icon d">🔄</div>
+        <span class="pillar-title green">数据飞轮 —— 量产级场景闭环</span>
+      </div>
+      <ul class="pillar-bullets">
+        <li>从 0 到 1 的量产数据采集 pipeline + 场景树 + 回归测试体系</li>
+        <li>Agent 的每次失败被捕捉、复现、修复、验证、部署（OTA）</li>
+        <li>仿真验证（SIL/HIL）+ 真实路采，场景覆盖度持续提升</li>
+        <li>这需要亿级里程 + 完整工具链，不是 demo 公司能短期建立的</li>
+      </ul>
+    </div>
+
+    <div class="safety-highlight">
+      <div class="key">纯 LLM → 53% &nbsp; LLM + Agent → 95%+</div>
+      <div class="detail">端到端成功率 · ReAct / Reflexion 范式已验证</div>
+    </div>
+
+    <div class="footer-bar">
+      <span>🧩 量产智驾团队</span>
+      <span>⚙️ 不是能做 · 是别人学不来</span>
     </div>
     
-    <div class="label-tag">SAFETY × RELIABILITY × RECOVERY</div>
-    
-    <div class="footer-note">来源：ReAct / Reflexion / Self-Consistency 已验证</div>
   </div>
 </div>
 </body>
