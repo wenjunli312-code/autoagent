@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic OS 架构</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px;
+  }
+  .container {
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #f0f6fc;
+  }
+  .subtitle {
+    text-align: center;
+    color: #8b949e;
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+
+  .arch {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* MasterAgent */
+  .master {
+    width: 440px;
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    border: 2px solid #3b82f6;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 3;
+  }
+  .master .icon { font-size: 28px; margin-bottom: 6px; }
+  .master h2 { font-size: 18px; font-weight: 600; color: #60a5fa; }
+  .master .tag {
+    display: inline-block;
+    background: #3b82f6;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 99px;
+    margin-top: 4px;
+  }
+  .master .desc {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+  .master .chip { font-size: 12px; color: #6b7280; margin-top: 8px; }
+
+  /* Vertical connector */
+  .connector-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    position: relative;
+  }
+  .connector-line::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    background: #8b5cf6;
+    border-radius: 50%;
+  }
+
+  /* Sub agent row */
+  .sub-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .sub-agent {
+    width: 320px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 2px solid #8b5cf6;
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+  }
+  .sub-agent .icon { font-size: 24px; margin-bottom: 4px; }
+  .sub-agent h3 { font-size: 16px; font-weight: 600; color: #a78bfa; }
+  .sub-agent .chip { font-size: 11px; color: #6b7280; margin-bottom: 10px; }
+  .sub-agent .role {
+    font-size: 12px;
+    color: #9ca3af;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  /* Tools inside sub-agent */
+  .tools {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-left: 0;
+  }
+  .tool-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    transition: all 0.2s;
+  }
+  .tool-item:hover { background: rgba(139, 92, 246, 0.15); }
+  .tool-item .tname {
+    font-weight: 500;
+    color: #c4b5fd;
+    min-width: 80px;
+  }
+  .tool-item .tdesc {
+    color: #9ca3af;
+    flex: 1;
+  }
+
+  /* note box */
+  .notes {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .note {
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-left: 3px solid #3b82f6;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #d1d5db;
+  }
+  .note strong { color: #60a5fa; }
+
+  /* cross chip label */
+  .cross-chip {
+    text-align: center;
+    font-size: 11px;
+    color: #6b7280;
+    margin-top: 10px;
+    padding: 4px 12px;
+    background: rgba(139, 92, 246, 0.06);
+    border-radius: 99px;
+    display: inline-block;
+  }
+
+  /* responsive */
+  @media (max-width: 768px) {
+    body { padding: 20px; }
+    .master { width: 100%; }
+    .sub-agent { width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🏗 Agentic OS 架构</h1>
+  <p class="subtitle">MasterAgent（极薄语音路由器）· Parking Agent（全权执行）· Tool 体系</p>
+
+  <div class="arch">
+
+    <!-- MasterAgent -->
+    <div class="master">
+      <div class="icon">🎙️</div>
+      <h2>MasterAgent</h2>
+      <span class="tag">语音路由器</span>
+      <div class="desc">
+        纯自然语言路由 · 不懂泊车领域知识<br>
+        只维护「有哪些子 Agent + 各自负责什么」的清单<br>
+        收到用户说"停到阴凉车位" → 原封不动转发给 Parking Agent
+      </div>
+      <div class="chip">📍 8775 芯片</div>
+      <div style="margin-top:12px; font-size:12px; color:#6b7280;">
+        其子 Agent 对其可见为一个 Tool：
+        <code style="background:#1f2937; padding:1px 6px; border-radius:4px; color:#60a5fa;">park_the_car(destination) → status</code>
+      </div>
+    </div>
+
+    <!-- connector -->
+    <div class="connector-line"></div>
+
+    <!-- Sub agents row -->
+    <div class="sub-row">
+
+      <!-- Cockpit Agent -->
+      <div class="sub-agent">
+        <div class="icon">🎛️</div>
+        <h3>Cockpit Agent</h3>
+        <div class="chip">📍 8775 芯片 · L1 本地记忆</div>
+        <div class="role">座舱交互：空调、音乐、导航设置<br>与 Parking Agent 无直接通信</div>
+        <div class="tools">
+          <div class="tool-item"><span class="tname">set_temp</span><span class="tdesc">设定空调温度</span></div>
+          <div class="tool-item"><span class="tname">play_music</span><span class="tdesc">播放音乐/电台</span></div>
+          <div class="tool-item"><span class="tname">navigate_to</span><span class="tdesc">设置导航目的地</span></div>
+        </div>
+      </div>
+
+      <!-- Parking Agent -->
+      <div class="sub-agent" style="border-color: #f59e0b;">
+        <div class="icon">🅿️</div>
+        <h3 style="color: #fbbf24;">Parking Agent</h3>
+        <div class="chip">📍 Thor-U 芯片 · L1 本地记忆 · 断连自治</div>
+        <div class="role">全权执行泊车任务<br>接收用户原始指令，理解 + 规划 + 执行全包</div>
+        <div class="tools">
+          <div class="tool-item"><span class="tname">detect_slots</span><span class="tdesc">检测可用车位（前视+4环视）</span></div>
+          <div class="tool-item"><span class="tname">check_conditions</span><span class="tdesc">判断"阴凉/充电桩"等约束</span></div>
+          <div class="tool-item"><span class="tname">plan_trajectory</span><span class="tdesc">规划泊车轨迹 &rarr; waypoints</span></div>
+          <div class="tool-item"><span class="tname">check_clearance</span><span class="tdesc">检查路径是否畅通</span></div>
+          <div class="tool-item"><span class="tname">inform_user</span><span class="tdesc">向座舱/用户反馈进度</span></div>
+          <div class="tool-item"><span class="tname">retry_or_abort</span><span class="tdesc">失败时重试或放弃</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Notes section answering the three questions -->
+  <div class="notes">
+
+    <div class="note">
+      <strong>🧭 问题 1：MasterAgent 对泊车来说只是一个"语音路由器"？</strong><br>
+      ✅ 是的。MasterAgent 极薄，只做两件事：<br>
+      ① 听用户说什么 → 判断属于哪个子 Agent（泊车 → Parking Agent）<br>
+      ② 把用户原话转过去，等待结果回来告诉用户<br>
+      MasterAgent <strong>不需要</strong>理解"阴凉"是什么意思、<strong>不需要</strong>知道泊车流程。<br>
+      泊车领域的全部智能都下沉到 Parking Agent 里。
+    </div>
+
+    <div class="note">
+      <strong>🔗 问题 2：Agent 和 Tool 的关系？</strong><br>
+      Agent（LLM + 推理循环）决定「做什么」「用什么做」「做完了下一步做什么」<br>
+      Tool（函数/API）是被调用的能力单元<br>
+      <br>
+      关系链：<br>
+      <code>用户指令 → Agent 推理 → Tool 调用 → 观察结果 → 再推理 → 再调用…… → 完成</code><br>
+      <br>
+      <strong>关键洞察</strong>：对 MasterAgent 来说，子 Agent 就是它的一个 Tool。<br>
+      MasterAgent 调 <code>park_the_car("停在阴凉车位")</code>，背后是一个完整的 Agent 循环在运行。
+    </div>
+
+    <div class="note">
+      <strong>🔄 问题 3：座舱（Cockpit）和 Thor 之间没有直接关系？</strong><br>
+      ✅ <strong>第一阶段：两者无直接通信</strong>。部署在不同芯片上，各自独立运行。<br>
+      <br>
+      唯一的联系链路是：<br>
+      <code>用户</code> → <code>MasterAgent</code> → <code>Cockpit / Parking</code>（各自转发）<br>
+      <br>
+      后续如果需要跨域推理（如"停好车后关空调"）才需要引入：<br>
+      <code>Parking Agent → State Summary → MasterAgent → Cockpit Agent</code><br>
+      但第一阶段不涉及，先做单域。
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
