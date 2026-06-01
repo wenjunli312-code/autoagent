@@ -3,114 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>车载 Agent — 安全可落地的智能架构</title>
+  <title>车载 Agent — 我们的优势</title>
   
   <script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/tailwindcss/3.0.23/tailwind.min.js"></script>
   
-  <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.loli.net/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.loli.net/css2?family=Noto+Sans+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
   
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Noto Sans SC', 'Inter', sans-serif;
-      background: #000;
-      color: #fff;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      background: #000; color: #fff; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; min-height: 100vh;
     }
     .slide {
-      width: 450px;
-      height: 800px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.75rem;
-      background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
-      overflow: hidden;
+      width: 450px; height: 800px; position: relative;
+      display: flex; flex-direction: column; padding: 2rem 1.5rem;
+      background: linear-gradient(180deg, #0a0a0a, #000);
+      overflow-y: auto; overflow-x: hidden;
     }
 
-    /* 光斑 */
-    .glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      pointer-events: none;
-    }
-    .glow-1 { width: 300px; height: 300px; background: #2563eb; opacity: 0.2; top: -80px; right: -60px; }
-    .glow-2 { width: 250px; height: 250px; background: #8b5cf6; opacity: 0.15; bottom: -60px; left: -40px; }
-    .glow-3 { width: 200px; height: 200px; background: #10b981; opacity: 0.1; top: 40%; left: 50%; }
+    .glow { position: absolute; border-radius: 50%; filter: blur(130px); pointer-events: none; }
+    .glow-1 { width: 280px; height: 280px; background: #2563eb; opacity: 0.15; top: -50px; left: -40px; }
+    .glow-2 { width: 220px; height: 220px; background: #8b5cf6; opacity: 0.12; bottom: 80px; right: -30px; }
+    .glow-3 { width: 180px; height: 180px; background: #10b981; opacity: 0.08; top: 50%; left: 40%; }
 
     .content { position: relative; z-index: 10; width: 100%; flex: 1; display: flex; flex-direction: column; }
 
-    /* 标签 */
-    .tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.7rem; letter-spacing: 0.15em; color: #6b7280;
-      border: 1px solid rgba(255,255,255,0.06); padding: 4px 14px; border-radius: 99px;
-      align-self: center; margin-bottom: 0.75rem;
+    .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 0.65rem; letter-spacing: 0.18em; color: #6b7280; border: 1px solid rgba(255,255,255,0.06); padding: 4px 14px; border-radius: 99px; align-self: center; margin-bottom: 0.6rem; }
+
+    .title { text-align: center; margin-bottom: 1rem; }
+    .title h1 { font-size: 1.5rem; font-weight: 900; line-height: 1.35; }
+    .title .sub { font-size: 0.75rem; color: #6b7280; font-weight: 300; margin-top: 4px; }
+
+    .card {
+      border-radius: 14px; padding: 0.85rem 1rem; margin-bottom: 0.7rem;
     }
 
-    /* 主标题 */
-    .main-title { text-align: center; margin-bottom: 1.25rem; }
-    .main-title h1 {
-      font-size: 1.6rem; font-weight: 900; line-height: 1.35; letter-spacing: 0.02em;
-    }
-    .main-title .sub {
-      font-size: 0.8rem; color: #6b7280; font-weight: 300; margin-top: 6px;
-    }
-
-    /* 三个优势块 */
-    .pillar { 
-      border-radius: 14px; padding: 0.9rem 1rem; margin-bottom: 0.7rem;
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .pillar-safety { background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(59,130,246,0.02)); border-color: rgba(59,130,246,0.2); }
-    .pillar-edge { background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(139,92,246,0.02)); border-color: rgba(139,92,246,0.2); }
-    .pillar-data { background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02)); border-color: rgba(16,185,129,0.2); }
-
-    .pillar-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-    .pillar-icon { width: 24px; height: 24px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
-    .pillar-icon.s { background: rgba(59,130,246,0.15); }
-    .pillar-icon.e { background: rgba(139,92,246,0.15); }
-    .pillar-icon.d { background: rgba(16,185,129,0.15); }
-    .pillar-title { font-size: 0.85rem; font-weight: 700; }
-    .pillar-title.blue { color: #60a5fa; }
-    .pillar-title.purple { color: #a78bfa; }
-    .pillar-title.green { color: #34d399; }
-    .pillar-bullets { padding-left: 0; margin-top: 2px; }
-    .pillar-bullets li {
-      list-style: none;
-      font-size: 0.7rem; color: #9ca3af; line-height: 1.55;
-      padding-left: 12px; position: relative;
-    }
-    .pillar-bullets li::before {
-      content: "›"; position: absolute; left: 0; color: #4b5563; font-weight: 700;
+    .card-hdr { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .card-ico { width: 22px; height: 22px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; flex-shrink: 0; }
+    .card-title { font-size: 0.8rem; font-weight: 700; }
+    .card-body { font-size: 0.68rem; color: #9ca3af; line-height: 1.55; }
+    .card-body strong { color: #e5e7eb; font-weight: 600; }
+    .our-edge {
+      display: inline-block; margin-top: 4px; padding: 2px 8px; border-radius: 4px;
+      font-size: 0.6rem; letter-spacing: 0.04em; line-height: 1.5;
     }
 
-    /* Safety 用大号突出 */
-    .safety-highlight {
-      text-align: center;
-      padding: 0.6rem 0 0.4rem;
-      border-top: 1px solid rgba(255,255,255,0.04);
-      margin-top: 0.1rem;
-    }
-    .safety-highlight .key {
-      font-size: 1rem; font-weight: 900; color: #60a5fa;
-    }
-    .safety-highlight .detail {
-      font-size: 0.65rem; color: #6b7280; margin-top: 2px;
-    }
+    /* 安全 — 蓝 */
+    .s-card { background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(59,130,246,0.01)); border: 1px solid rgba(59,130,246,0.15); }
+    .s-card .card-ico { background: rgba(59,130,246,0.12); }
+    .s-card .card-title { color: #60a5fa; }
+    .s-edge { background: rgba(59,130,246,0.08); color: #93c5fd; }
 
-    .footer-bar {
-      margin-top: auto;
-      padding-top: 0.75rem;
+    /* 端侧 — 紫 */
+    .e-card { background: linear-gradient(135deg, rgba(139,92,246,0.06), rgba(139,92,246,0.01)); border: 1px solid rgba(139,92,246,0.15); }
+    .e-card .card-ico { background: rgba(139,92,246,0.12); }
+    .e-card .card-title { color: #a78bfa; }
+    .e-edge { background: rgba(139,92,246,0.08); color: #c4b5fd; }
+
+    /* 数据 — 绿 */
+    .d-card { background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.01)); border: 1px solid rgba(16,185,129,0.15); }
+    .d-card .card-ico { background: rgba(16,185,129,0.12); }
+    .d-card .card-title { color: #34d399; }
+    .d-edge { background: rgba(16,185,129,0.08); color: #6ee7b7; }
+
+    /* 底部数据栏 */
+    .metric-bar {
+      margin-top: auto; padding: 0.75rem 0 0.3rem;
       border-top: 1px solid rgba(255,255,255,0.03);
-      display: flex; justify-content: space-between;
-      font-size: 0.6rem; color: #4b5563;
+      display: flex; justify-content: space-around; gap: 8px;
+    }
+    .metric { text-align: center; }
+    .metric .num { font-size: 1.3rem; font-weight: 900; }
+    .metric .lbl { font-size: 0.55rem; color: #6b7280; margin-top: 1px; }
+    .num-blue { color: #60a5fa; }
+    .num-purple { color: #a78bfa; }
+    .num-green { color: #34d399; }
+
+    .footer {
+      padding-top: 0.4rem; font-size: 0.55rem; color: #374151;
+      text-align: center;
     }
   </style>
 </head>
@@ -121,67 +95,83 @@
   <div class="glow glow-3"></div>
   
   <div class="content">
+    <div class="tag">🚗 智驾量产团队</div>
     
-    <div class="tag">⛑️ KEY PILLARS</div>
-    
-    <div class="main-title">
-      <h1>车载 Agent<br><span style="color: #60a5fa;">安全可落地</span>的智能架构</h1>
-      <div class="sub">不是堆 API，是系统工程</div>
+    <div class="title">
+      <h1>车载 Agent<br>我们为什么能做</h1>
+      <div class="sub">智驾量产的基因 → Agent 的核心能力</div>
     </div>
 
-    <!-- 第一：安全性（加大篇幅突出） -->
-    <div class="pillar pillar-safety">
-      <div class="pillar-header">
-        <div class="pillar-icon s">🛡️</div>
-        <span class="pillar-title blue">Safety-by-Design — LLM 的创造性受安全约束</span>
+    <!-- 优势 1 -->
+    <div class="card s-card">
+      <div class="card-hdr">
+        <div class="card-ico">🛡️</div>
+        <span class="card-title">安全可靠性</span>
       </div>
-      <ul class="pillar-bullets">
-        <li>Fail-safe 设计：Agent 超时/失败 → 回退到确定性 safe-stop，不依赖 LLM 正确</li>
-        <li>层级安全监控：Guard Agent 实时拦截危险决策，与规则引擎双重校验</li>
-        <li>确定性调度：Agent 推理受 Thinking Budget 约束，超时强制中断</li>
-        <li>可追溯审计：每一步推理→调用→结果，全链路可回放可审查</li>
-        <li>从 0 到 1 的智驾量产经验：知道在哪里划红线、怎么做 fail-safe</li>
-      </ul>
-    </div>
-
-    <!-- 第二：端侧部署 -->
-    <div class="pillar pillar-edge">
-      <div class="pillar-header">
-        <div class="pillar-icon e">⚡</div>
-        <span class="pillar-title purple">端侧原生（Edge Native）—— 离线可用，低延迟</span>
+      <div class="card-body">
+        Agent 在车上最核心的挑战是——<strong>LLM 的创造性 vs 车辆的安全性</strong>。做过智驾量产的人才知道：
+        <strong>fail-safe 不是特性，是底线。</strong>
+        <br><br>
+        • Agent 超时/失败 → 回退到确定性 safe-stop，不依赖 LLM 正确<br>
+        • Guard Agent 实时拦截 + 规则引擎双重校验，杜绝危险决策<br>
+        • Thinking Budget 约束推理时长，超时强制中断<br>
+        • 全链路可审计：每一步推理→调用→结果可追溯
       </div>
-      <ul class="pillar-bullets">
-        <li>多芯片异构架构经验（8775 + Thor-U）—— Agent-to-Agent 跨芯片通信</li>
-        <li>端侧推理 &lt; 200ms，断网也能全功能运行（与云端方案拉开代差）</li>
-        <li>模型量化 / 算子融合 / 内存复用 —— 资源受限环境调优的日常能力</li>
-        <li>实时约束精确预算：推理延迟 + Tool 执行延迟 + 通信延迟，全链路可控</li>
-      </ul>
+      <div class="our-edge s-edge">✅ 我们做过：智驾系统 fail-safe / 传感器冗余 / ASIL D / 确定性调度</div>
     </div>
 
-    <!-- 第三：数据闭环 -->
-    <div class="pillar pillar-data">
-      <div class="pillar-header">
-        <div class="pillar-icon d">🔄</div>
-        <span class="pillar-title green">数据飞轮 —— 量产级场景闭环</span>
+    <!-- 优势 2 -->
+    <div class="card e-card">
+      <div class="card-hdr">
+        <div class="card-ico">⚡</div>
+        <span class="card-title">端侧落地能力</span>
       </div>
-      <ul class="pillar-bullets">
-        <li>从 0 到 1 的量产数据采集 pipeline + 场景树 + 回归测试体系</li>
-        <li>Agent 的每次失败被捕捉、复现、修复、验证、部署（OTA）</li>
-        <li>仿真验证（SIL/HIL）+ 真实路采，场景覆盖度持续提升</li>
-        <li>这需要亿级里程 + 完整工具链，不是 demo 公司能短期建立的</li>
-      </ul>
+      <div class="card-body">
+        车载 Agent 必须端侧运行——<strong>云上推理延迟不可控，断网即失效</strong>。
+        <br><br>
+        • 多芯片异构架构经验（8775 + Thor-U），Agent-to-Agent 跨芯片通信<br>
+        • 端侧推理 &lt; 200ms，断网也能全功能运行<br>
+        • 模型量化 / 算子融合 / 内存复用 —— 资源受限优化是日常能力<br>
+        • 推理延迟 + Tool 执行 + 通信延迟，全链路实时预算精确
+      </div>
+      <div class="our-edge e-edge">✅ 我们做过：多芯片量产部署 / 内存&性能调优 / 跨芯片通信协议</div>
     </div>
 
-    <div class="safety-highlight">
-      <div class="key">纯 LLM → 53% &nbsp; LLM + Agent → 95%+</div>
-      <div class="detail">端到端成功率 · ReAct / Reflexion 范式已验证</div>
+    <!-- 优势 3 -->
+    <div class="card d-card">
+      <div class="card-hdr">
+        <div class="card-ico">🔄</div>
+        <span class="card-title">量产级数据闭环</span>
+      </div>
+      <div class="card-body">
+        Agent 的能力上限不取决于模型参数，<strong>取决于场景覆盖度</strong>。
+        <br><br>
+        • 从实车采集 → 场景提取 → 回归测试 → OTA，完整 pipeline 已跑通<br>
+        • 场景树 + SIL/HIL 仿真验证体系，可直接复用于 Agent 测试<br>
+        • Agent 每次失败被捕捉、复现、修复、验证、部署<br>
+        • 亿级里程数据积累 + 量产工具链，demo 公司无法短期建立
+      </div>
+      <div class="our-edge d-edge">✅ 我们做过：数据采集 pipeline / 场景树 / SIL-HIL / OTA 迭代</div>
     </div>
 
-    <div class="footer-bar">
-      <span>🧩 量产智驾团队</span>
-      <span>⚙️ 不是能做 · 是别人学不来</span>
+    <!-- 底部数据 -->
+    <div class="metric-bar">
+      <div class="metric">
+        <div class="num num-blue">10<span style="font-size:0.65rem; font-weight:300;">年+</span></div>
+        <div class="lbl">智驾量产经验</div>
+      </div>
+      <div class="metric">
+        <div class="num num-purple">100<span style="font-size:0.65rem; font-weight:300;">人+</span></div>
+        <div class="lbl">全栈团队管理</div>
+      </div>
+      <div class="metric">
+        <div class="num num-green">0→1</div>
+        <div class="lbl">完整量产项目</div>
+      </div>
     </div>
-    
+
+    <div class="footer">不是「能做」 · 是「只有我们做过」</div>
+
   </div>
 </div>
 </body>
